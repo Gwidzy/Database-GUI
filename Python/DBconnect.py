@@ -45,7 +45,7 @@ def populateTable():
 
             conn.commit()
 
-            print(f"Tables created successfully using SQLLite version {sqlite3.sqlite_version}")
+            print(f"Tables populated successfully!")
 
     except sqlite3.OperationalError as e:
         print("Oh no! Error:", e)
