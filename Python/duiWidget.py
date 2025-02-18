@@ -3,6 +3,7 @@ import subprocess
 import os
 
 class DUI(rumps.App):
+    
     def __init__(self):
         super(DUI, self).__init__("DUI", icon="images/database-storage.png") # <a href="https://www.flaticon.com/free-icons/database" title="database icons">Database icons created by phatplus - Flaticon</a>
 

@@ -1,5 +1,10 @@
 import tkinter as tk
+import sys
+import os
 from string import Template
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+from DBconnect import createTable
 # from tkinter import ttk, messagebox
 # import json
 
@@ -9,25 +14,27 @@ from string import Template
 
 # Function to make the API call
 def createSQL():
-    tblName = tblName_entry.get()
-    colName = colName_entry.get()
-    colType = colType_entry.get()
-
-    createTableSQL = '/Users/guido/Documents/code/Database-GUI/SQL/createTable.sql'
-
-    with open(createTableSQL, 'r') as fileProcess:
-        sql = fileProcess.read()
     
-    query = Template(sql).substitute(
-        table_name = tblName,
-        col1 = colName,
-        col1Type = colType
-    )
+    createTable()
+    # tblName = tblName_entry.get()
+    # colName = colName_entry.get()
+    # colType = colType_entry.get()
+
+    # createTableSQL = '/Users/guido/Documents/code/Database-GUI/SQL/createTable.sql'
+
+    # with open(createTableSQL, 'r') as fileProcess:
+    #     sql = fileProcess.read()
+    
+    # query = Template(sql).substitute(
+    #     table_name = tblName,
+    #     col1 = colName,
+    #     col1Type = colType
+    # )
 
     print("createTable reached")
-    print(tblName)
-    print(colName)
-    print(colType)
+    # print(tblName)
+    # print(colName)
+    # print(colType)
 
 # Set up the Tkinter window
 root = tk.Tk()

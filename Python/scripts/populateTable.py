@@ -1,5 +1,10 @@
 import tkinter as tk
+import sys
+import os
 from string import Template
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+from DBconnect import populateTable
 # from tkinter import ttk, messagebox
 # import json
 
@@ -9,25 +14,27 @@ from string import Template
 
 # Function to make the API call
 def populateSQL():
-    tblName = tblName_entry.get()
-    colName = colName_entry.get()
-    colValues = colValues_entry.get()
 
-    popTableSQL = '/Users/guido/Documents/code/Database-GUI/SQL/populateTable.sql'
+    populateTable()
+    # tblName = tblName_entry.get()
+    # colName = colName_entry.get()
+    # colValues = colValues_entry.get()
 
-    with open(popTableSQL, 'r') as fileProcess:
-        sql = fileProcess.read()
+    # popTableSQL = '/Users/guido/Documents/code/Database-GUI/SQL/populateTable.sql'
+
+    # with open(popTableSQL, 'r') as fileProcess:
+    #     sql = fileProcess.read()
     
-    query = Template(sql).substitute(
-        table_name = tblName,
-        col1 = colName,
-        value1 = colValues
-    )
+    # query = Template(sql).substitute(
+    #     table_name = tblName,
+    #     col1 = colName,
+    #     value1 = colValues
+    # )
 
     print("popTable reached")
-    print(tblName)
-    print(colName)
-    print(colValues)
+    # print(tblName)
+    # print(colName)
+    # print(colValues)
 
 # Set up the Tkinter window
 root = tk.Tk()
