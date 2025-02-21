@@ -1,5 +1,4 @@
 import tkinter as tk
-import DBconnect
 
 # Function to make the API call
 def selectSQL():

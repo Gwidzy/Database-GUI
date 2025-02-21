@@ -11,7 +11,8 @@ class DUI(rumps.App):
         self.menu = [
             rumps.MenuItem("Create Queries"),
             rumps.MenuItem("Update Queries"),
-            rumps.MenuItem("Select Queries")
+            rumps.MenuItem("Select Queries"),
+            rumps.MenuItem("Options")
         ]
 
         # Add submenu items under "Run Scripts"
@@ -21,12 +22,14 @@ class DUI(rumps.App):
         self.menu["Update Queries"].add(rumps.MenuItem("Rename Column", callback=self.run_rnmCol))
         self.menu["Select Queries"].add(rumps.MenuItem("Get values", callback=self.run_slctSql))
 
+        self.menu["Options"].add(rumps.MenuItem("About", callback=self.run_abt))
+
     def run_crtTbl(self, sender):
         self.run_tool_script("createTable.py")
 
     def run_popTbl(self, sender):
         self.run_tool_script("populateTable.py")
-
+        
     def run_rnmTbl(self, sender):
         self.run_tool_script("renameTable.py")
 
@@ -35,6 +38,12 @@ class DUI(rumps.App):
 
     def run_slctSql(self, sender):
         self.run_tool_script("selectSQL.py")
+
+    def run_abt(self, sender):
+        self.run_tool_script("about.py")
+
+    def run_quit(self, sender):
+        self.run_tool_script("quit.py")
 
     def run_tool_script(self, script_name):
         script_path = os.path.join(os.path.dirname(__file__), '', script_name)
