@@ -1,42 +1,20 @@
 import tkinter as tk
-import sys
-import os
-from string import Template
-
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-from DBconnect import populateTable
-# from tkinter import ttk, messagebox
-# import json
-
-# TODO
-# create GUI
-
+import DBconnect
 
 # Function to make the API call
 def populateSQL():
 
-    populateTable()
-    # tblName = tblName_entry.get()
-    # colName = colName_entry.get()
-    # colValues = colValues_entry.get()
-
-    # popTableSQL = '/Users/guido/Documents/code/Database-GUI/SQL/populateTable.sql'
-
-    # with open(popTableSQL, 'r') as fileProcess:
-    #     sql = fileProcess.read()
-    
-    # query = Template(sql).substitute(
-    #     table_name = tblName,
-    #     col1 = colName,
-    #     value1 = colValues
-    # )
+    tblName = tblName_entry.get()
+    colName = colName_entry.get()
+    colValues = colValues_entry.get()
 
     print("popTable reached")
-    # print(tblName)
-    # print(colName)
-    # print(colValues)
+    print("Table Name:", tblName)
+    print("Column Name:", colName)
+    print("Column value:", colValues)
 
-# Set up the Tkinter window
+    DBconnect.populateTable(tblName, colName, colValues)
+
 root = tk.Tk()
 root.title("DUI - Populate Table")
 

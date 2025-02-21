@@ -17,6 +17,7 @@ class DUI(rumps.App):
         self.menu["Tools"].add(rumps.MenuItem("Populate Table", callback=self.run_popTbl))
         self.menu["Tools"].add(rumps.MenuItem("Rename Table", callback=self.run_rnmTbl))
         self.menu["Tools"].add(rumps.MenuItem("Rename Column", callback=self.run_rnmCol))
+        self.menu["Tools"].add(rumps.MenuItem("Get values", callback=self.run_slctSql))
 
     def run_crtTbl(self, sender):
         self.run_tool_script("createTable.py")
@@ -30,8 +31,11 @@ class DUI(rumps.App):
     def run_rnmCol(self, sender):
         self.run_tool_script("renameColumn.py")
 
+    def run_slctSql(self, sender):
+        self.run_tool_script("selectSQL.py")
+
     def run_tool_script(self, script_name):
-        script_path = os.path.join(os.path.dirname(__file__), 'scripts', script_name)
+        script_path = os.path.join(os.path.dirname(__file__), '', script_name)
         subprocess.Popen(["/usr/local/bin/python3.13", script_path])
 
 if __name__ == "__main__":

@@ -1,40 +1,19 @@
 import tkinter as tk
-import sys
-import os
-from string import Template
+import DBconnect
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-from DBconnect import createTable
-# from tkinter import ttk, messagebox
-# import json
-
-# TODO
-# create GUI
-
-
-# Function to make the API call
+# Function to gather input and call DBconnect.createTable
 def createSQL():
+    tblName = tblName_entry.get()
+    colName = colName_entry.get()
+    colType = colType_entry.get()
     
-    createTable()
-    # tblName = tblName_entry.get()
-    # colName = colName_entry.get()
-    # colType = colType_entry.get()
-
-    # createTableSQL = '/Users/guido/Documents/code/Database-GUI/SQL/createTable.sql'
-
-    # with open(createTableSQL, 'r') as fileProcess:
-    #     sql = fileProcess.read()
-    
-    # query = Template(sql).substitute(
-    #     table_name = tblName,
-    #     col1 = colName,
-    #     col1Type = colType
-    # )
-
     print("createTable reached")
-    # print(tblName)
-    # print(colName)
-    # print(colType)
+    print("Table Name:", tblName)
+    print("Column Name:", colName)
+    print("Column Type:", colType)
+    
+    # Call the function from DBconnect with parameters
+    DBconnect.createTable(tblName, colName, colType)
 
 # Set up the Tkinter window
 root = tk.Tk()
@@ -58,6 +37,5 @@ colType_entry.grid(row=2, column=1, padx=10, pady=5)
 # Submit Button
 submit_button = tk.Button(root, text="Submit", command=createSQL)
 submit_button.grid(row=3, columnspan=2, pady=10)
-
 
 root.mainloop()
