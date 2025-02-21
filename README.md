@@ -1,2 +1,2 @@
 # Database-GUI
-GUI made in Python to create databases
+Simple GUI made with Python to run SQL queries.
