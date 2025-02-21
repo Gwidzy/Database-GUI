@@ -8,6 +8,7 @@ def selectSQL():
     
     print("selectSQL reached")
     print("Table Name:", tblName)
+    print("---------------------")
 
     outputSQL.config(text="SELECT * FROM " + tblName) 
 

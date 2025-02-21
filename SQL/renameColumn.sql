@@ -1,2 +1,2 @@
-ALTER TABLE table_name
-RENAME COLUMN col1 to column1
+ALTER TABLE $table_name
+RENAME COLUMN $column1Before to $column1After

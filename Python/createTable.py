@@ -11,6 +11,9 @@ def createSQL():
     print("Table Name:", tblName)
     print("Column Name:", colName)
     print("Column Type:", colType)
+    print("---------------------")
+
+    outputSQL.config(text="CREATE TABLE IF NOT EXISTS " + tblName + "  (" + colName + " " + colType + ");")
     
     # Call the function from DBconnect with parameters
     DBconnect.createTable(tblName, colName, colType)
@@ -37,5 +40,10 @@ colType_entry.grid(row=2, column=1, padx=10, pady=5)
 # Submit Button
 submit_button = tk.Button(root, text="Submit", command=createSQL)
 submit_button.grid(row=3, columnspan=2, pady=10)
+
+# Display output
+tk.Label(root, text="Output:").grid(row=5, column=0, padx=10, pady=5)
+outputSQL = tk.Label(root, text="")
+outputSQL.grid(row=6, column=0,columnspan=3,padx=10, pady=5)
 
 root.mainloop()

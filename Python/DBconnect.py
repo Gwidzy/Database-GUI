@@ -54,6 +54,32 @@ def populateTable(tblName, colName, colValues):
     except sqlite3.OperationalError as e:
         print("Oh no! Error:", e)
 
+# rename column
+def renameCol(tblName,col1Before,col1After):
+
+    selectSQL = '/Users/guido/Documents/code/DatabaseGUI/SQL/renameColumn.sql'
+
+    with open(selectSQL, 'r') as fileProcess:
+        sql = fileProcess.read()
+
+    query = Template(sql).substitute(
+        table_name=tblName,
+        column1Before = col1Before,
+        column1After = col1After
+    )
+
+    try:
+        with sqlite3.connect(db_path) as conn:
+            cursor = conn.cursor()
+            cursor.execute(query)
+            conn.commit()
+
+            print(f"Column " + col1Before + " successfully renamed to " + col1After)
+
+    except sqlite3.OperationalError as e:
+        print("Oh no! Error:", e)
+
+
 # select * from the table
 def selectSQL(tblName):
 

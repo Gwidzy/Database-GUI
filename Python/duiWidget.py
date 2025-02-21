@@ -9,15 +9,17 @@ class DUI(rumps.App):
 
         # Define main menu items
         self.menu = [
-            rumps.MenuItem("Tools")
+            rumps.MenuItem("Create Queries"),
+            rumps.MenuItem("Update Queries"),
+            rumps.MenuItem("Select Queries")
         ]
 
         # Add submenu items under "Run Scripts"
-        self.menu["Tools"].add(rumps.MenuItem("Create Table", callback=self.run_crtTbl))
-        self.menu["Tools"].add(rumps.MenuItem("Populate Table", callback=self.run_popTbl))
-        self.menu["Tools"].add(rumps.MenuItem("Rename Table", callback=self.run_rnmTbl))
-        self.menu["Tools"].add(rumps.MenuItem("Rename Column", callback=self.run_rnmCol))
-        self.menu["Tools"].add(rumps.MenuItem("Get values", callback=self.run_slctSql))
+        self.menu["Create Queries"].add(rumps.MenuItem("Create Table", callback=self.run_crtTbl))
+        self.menu["Create Queries"].add(rumps.MenuItem("Populate Table", callback=self.run_popTbl))
+        self.menu["Update Queries"].add(rumps.MenuItem("Rename Table", callback=self.run_rnmTbl))
+        self.menu["Update Queries"].add(rumps.MenuItem("Rename Column", callback=self.run_rnmCol))
+        self.menu["Select Queries"].add(rumps.MenuItem("Get values", callback=self.run_slctSql))
 
     def run_crtTbl(self, sender):
         self.run_tool_script("createTable.py")
