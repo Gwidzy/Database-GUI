@@ -1,7 +1,7 @@
 import tkinter as tk
 import DBconnect
 
-# Function to make the API call
+# function to gather input and call DBconnect.populateSQL
 def populateSQL():
 
     tblName = tblName_entry.get()
@@ -16,8 +16,10 @@ def populateSQL():
 
     outputSQL.config(text="REPLACE INTO " + tblName  + " (" + colName + ") VALUES " + "(" + colValues + ");")
 
+    # call the function from DBconnect with params
     DBconnect.populateTable(tblName, colName, colValues)
 
+# set up the Tkinter window
 root = tk.Tk()
 root.title("DUI - Populate Table")
 

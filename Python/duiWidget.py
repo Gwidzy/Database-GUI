@@ -7,7 +7,7 @@ class DUI(rumps.App):
     def __init__(self):
         super(DUI, self).__init__("DUI", icon="images/database-storage.png") # <a href="https://www.flaticon.com/free-icons/database" title="database icons">Database icons created by phatplus - Flaticon</a>
 
-        # Define main menu items
+        # main menu items
         self.menu = [
             rumps.MenuItem("Create Queries"),
             rumps.MenuItem("Update Queries"),
@@ -15,11 +15,12 @@ class DUI(rumps.App):
             rumps.MenuItem("Options")
         ]
 
-        # Add submenu items under "Run Scripts"
+        # add submenu items under "Run Scripts"
         self.menu["Create Queries"].add(rumps.MenuItem("Create Table", callback=self.run_crtTbl))
         self.menu["Create Queries"].add(rumps.MenuItem("Populate Table", callback=self.run_popTbl))
         self.menu["Update Queries"].add(rumps.MenuItem("Rename Table", callback=self.run_rnmTbl))
         self.menu["Update Queries"].add(rumps.MenuItem("Rename Column", callback=self.run_rnmCol))
+        self.menu["Update Queries"].add(rumps.MenuItem("Add Column", callback=self.run_addCol))
         self.menu["Select Queries"].add(rumps.MenuItem("Get values", callback=self.run_slctSql))
 
         self.menu["Options"].add(rumps.MenuItem("About", callback=self.run_abt))
@@ -35,6 +36,9 @@ class DUI(rumps.App):
 
     def run_rnmCol(self, sender):
         self.run_tool_script("renameColumn.py")
+
+    def run_addCol(self, sender):
+        self.run_tool_script("addColumn.py")
 
     def run_slctSql(self, sender):
         self.run_tool_script("selectSQL.py")

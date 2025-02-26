@@ -54,16 +54,40 @@ def populateTable(tblName, colName, colValues):
     except sqlite3.OperationalError as e:
         print("Oh no! Error:", e)
 
-# rename column
-def renameCol(tblName,col1Before,col1After):
+# rename table
+def renameTbl(tblName,tbl1After):
+    
+    renameTblSQL = '/Users/guido/Documents/code/DatabaseGUI/SQL/renameTable.sql'
 
-    selectSQL = '/Users/guido/Documents/code/DatabaseGUI/SQL/renameColumn.sql'
-
-    with open(selectSQL, 'r') as fileProcess:
+    with open(renameTblSQL, 'r') as fileProcess:
         sql = fileProcess.read()
 
     query = Template(sql).substitute(
-        table_name=tblName,
+        table_name = tblName,
+        table1After = tbl1After
+    )
+
+    try:
+        with sqlite3.connect(db_path) as conn:
+            cursor = conn.cursor()
+            cursor.execute(query)
+            conn.commit()
+
+            print(f"Table " + tblName + " successfully renamed to " + tbl1After)
+
+    except sqlite3.OperationalError as e:
+        print("Oh no! Error: ", e)
+
+# rename column
+def renameCol(tblName,col1Before,col1After):
+
+    renameColSQL = '/Users/guido/Documents/code/DatabaseGUI/SQL/renameColumn.sql'
+
+    with open(renameColSQL, 'r') as fileProcess:
+        sql = fileProcess.read()
+
+    query = Template(sql).substitute(
+        table_name = tblName,
         column1Before = col1Before,
         column1After = col1After
     )
@@ -79,6 +103,30 @@ def renameCol(tblName,col1Before,col1After):
     except sqlite3.OperationalError as e:
         print("Oh no! Error:", e)
 
+# add new column
+def addColumn(tblName,colName,colType):
+
+    addColumnSQL = '/Users/guido/Documents/code/DatabaseGUI/SQL/addColumn.sql'
+    
+    with open(addColumnSQL, 'r') as fileProcess:
+        sql = fileProcess.read()
+
+    query = Template(sql).substitute(
+        table_name=tblName,
+        col1=colName,
+        col1Type=colType
+    )
+
+    try:
+        with sqlite3.connect(db_path) as conn:
+            cursor = conn.cursor()
+            cursor.execute(query)
+            conn.commit()
+
+            print(f"New column " + colName + " successfully created on table " + tblName)
+        
+    except sqlite3.OperationalError as e:
+        print("Oh no! Error: ", e)
 
 # select * from the table
 def selectSQL(tblName):

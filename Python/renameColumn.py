@@ -1,25 +1,27 @@
 import tkinter as tk
 import DBconnect
 
-# Function to make the API call
+# function to gather input and call DBconnect.renameColumn
 def renameCol():
 
     tblName = tblName_entry.get()
     col1Before = col1Before_entry.get()
     col1After = col1After_entry.get()
 
-    print("renameCal reached")
+    print("renameColumn reached")
     print("Table Name:", tblName)
     print("Column before:", col1Before)
     print("Column after:", col1After)
     print("---------------------")
 
-    outputSQL.config(text="ALTER TABLE " + tblName + " RENAME COLUMN " + col1Before + " to " + col1After) 
+    outputSQL.config(text="ALTER TABLE " + tblName + " RENAME COLUMN " + col1Before + " TO " + col1After) 
 
+    # call the function from DBconnect with params
     DBconnect.renameCol(tblName, col1Before, col1After)
 
+# set up the Tkinter window
 root = tk.Tk()
-root.title("DUI - Get Table Values")
+root.title("DUI - Rename Table")
 
 # Table name entry
 tk.Label(root, text="Enter table name:").grid(row=0, column=0, padx=10, pady=5)

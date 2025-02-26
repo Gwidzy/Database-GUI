@@ -1,6 +1,7 @@
 import tkinter as tk
+import DBconnect
 
-# Function to make the API call
+# function to gather input and call DBconnect.selectSQL
 def selectSQL():
 
     tblName = tblName_entry.get()
@@ -11,6 +12,10 @@ def selectSQL():
 
     outputSQL.config(text="SELECT * FROM " + tblName) 
 
+    # call the function from DBconnect with params
+    DBconnect.selectSQL(tblName)
+
+# set up the Tkinter window
 root = tk.Tk()
 root.title("DUI - Get Table Values")
 

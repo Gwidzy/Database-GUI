@@ -1,2 +1,2 @@
 ALTER TABLE $table_name
-RENAME TO $table1After
+ADD $col1 $col1Type;

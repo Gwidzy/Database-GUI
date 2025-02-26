@@ -1,26 +1,26 @@
 import tkinter as tk
 import DBconnect
 
-# function to gather input and call DBconnect.createTable
-def createSQL():
+# function to gather input and call DBconnect.addColumn
+def addColumn():
     tblName = tblName_entry.get()
     colName = colName_entry.get()
     colType = colType_entry.get()
     
-    print("createTable reached")
+    print("addColumn reached")
     print("Table Name:", tblName)
     print("Column Name:", colName)
     print("Column Type:", colType)
     print("---------------------")
 
-    outputSQL.config(text="CREATE TABLE IF NOT EXISTS " + tblName + "  (" + colName + " " + colType + ");")
-    
+    outputSQL.config(text="ALTER TABLE " + tblName + "  ADD" + colName + " " + colType + ";")
+
     # call the function from DBconnect with params
-    DBconnect.createTable(tblName, colName, colType)
+    DBconnect.addColumn(tblName, colName, colType)
 
 # set up the Tkinter window
 root = tk.Tk()
-root.title("DUI - Create Table")
+root.title("DUI - Add Column")
 
 # Table name entry
 tk.Label(root, text="Enter table name:").grid(row=0, column=0, padx=10, pady=5)
@@ -38,7 +38,7 @@ colType_entry = tk.Entry(root, width=40)
 colType_entry.grid(row=2, column=1, padx=10, pady=5)
 
 # Submit Button
-submit_button = tk.Button(root, text="Submit", command=createSQL)
+submit_button = tk.Button(root, text="Submit", command=addColumn)
 submit_button.grid(row=3, columnspan=2, pady=10)
 
 # Display output
