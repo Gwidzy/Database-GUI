@@ -19,7 +19,7 @@ def renameTbl():
 
 # set up the Tkinter window
 root = tk.Tk()
-root.title("DUI - Get Table Values")
+root.title("DUI - Rename Table")
 
 # Table name entry
 tk.Label(root, text="Enter table name:").grid(row=0, column=0, padx=10, pady=5)
